@@ -1,0 +1,7 @@
+line-length = 100
+target-version = "py312"
+
+[lint]
+select = ["E", "F", "I", "UP", "B"]
+# Django migrations are auto-generated; don't lint them.
+exclude = ["*/migrations/*"]
