@@ -1,7 +1,7 @@
 import type { ApiEdge, ApiNode } from "../types";
 
 export type Direction = "ancestors" | "descendants";
-export type ViewMode = Direction | "all";
+export type ViewMode = Direction | "all" | "timeline";
 
 export interface SubGraph {
   nodes: ApiNode[];

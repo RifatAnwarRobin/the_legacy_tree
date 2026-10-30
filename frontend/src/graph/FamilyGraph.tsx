@@ -18,6 +18,7 @@ import { FocusControls } from "./FocusControls";
 import { layoutGraph } from "./layout";
 import { PersonNode } from "./PersonNode";
 import { buildSubgraph, type Direction, type ViewMode } from "./subgraph";
+import { Timeline } from "./Timeline";
 import { toEdge, toNode } from "./transform";
 
 const nodeTypes = { person: PersonNode };
@@ -72,6 +73,7 @@ export function FamilyGraph() {
     if (mode === "all") {
       return layoutWholeTree(graph.nodes, graph.edges);
     }
+    if (mode === "timeline") return empty;
     if (!focusId) return empty;
 
     const sub = buildSubgraph(graph.nodes, graph.edges, focusId, mode as Direction);
@@ -127,24 +129,30 @@ export function FamilyGraph() {
         }}
       />
 
-      <ReactFlow
-        key={`${mode}-${focusId}`}
-        nodes={nodes}
-        edges={displayEdges}
-        nodeTypes={nodeTypes}
-        onNodeClick={onNodeClick}
-        onPaneClick={() => setSelectedId(null)}
-        fitView
-        fitViewOptions={{ padding: 0.25 }}
-        minZoom={0.15}
-      >
-        <Background gap={30} size={1.4} color="rgba(201, 162, 75, 0.12)" />
-        <MiniMap pannable zoomable nodeStrokeWidth={2} />
-        <Controls showInteractive={false} />
-      </ReactFlow>
+      {mode === "timeline" ? (
+        <Timeline graph={graph as GraphResponse} />
+      ) : (
+        <>
+          <ReactFlow
+            key={`${mode}-${focusId}`}
+            nodes={nodes}
+            edges={displayEdges}
+            nodeTypes={nodeTypes}
+            onNodeClick={onNodeClick}
+            onPaneClick={() => setSelectedId(null)}
+            fitView
+            fitViewOptions={{ padding: 0.25 }}
+            minZoom={0.15}
+          >
+            <Background gap={30} size={1.4} color="rgba(201, 162, 75, 0.12)" />
+            <MiniMap pannable zoomable nodeStrokeWidth={2} />
+            <Controls showInteractive={false} />
+          </ReactFlow>
 
-      {selectedId && (
-        <DetailPanel personId={selectedId} onClose={() => setSelectedId(null)} />
+          {selectedId && (
+            <DetailPanel personId={selectedId} onClose={() => setSelectedId(null)} />
+          )}
+        </>
       )}
     </>
   );
