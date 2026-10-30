@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Third Party(DRF Registration)
     "rest_framework",
+    "corsheaders",
     # Local apps
     "apps.people",
 ]
@@ -63,8 +64,16 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 50,
 }
 
+# Allow the React dev server (Vite, port 5173) to call the API in development.
+CORS_ALLOWED_ORIGINS = env_list(
+    "DJANGO_CORS_ALLOWED_ORIGINS",
+    default="http://localhost:5173,http://127.0.0.1:5173",
+)
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    # Must sit above middleware that can generate responses (WhiteNoise, Common).
+    "corsheaders.middleware.CorsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",

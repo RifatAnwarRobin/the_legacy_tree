@@ -1,0 +1,409 @@
+:root {
+  /* Heritage palette: ink canvas, ivory nameplates, a single brass accent. */
+  --ink: #171a28;
+  --ink-2: #1e2236;
+  --ink-3: #272c44;
+  --paper: #f6f1e7;
+  --paper-2: #efeadf;
+  --paper-edge: #e3dbca;
+  --text: #2c2822;
+  --text-soft: #6a6355;
+  --paper-text-on-ink: #ece6d8;
+  --gold: #c9a24b;
+  --gold-soft: #ddc389;
+  --line-parent: #8a8aa0;
+
+  --accent-m: #3f7d78;
+  --accent-f: #a65d74;
+  --accent-o: #6f6f8a;
+  --accent-u: #9a927f;
+
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { margin: 0; height: 100%; }
+body { background: var(--ink); }
+
+h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 500; }
+
+/* ---- Buttons -------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  font: inherit;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 120ms ease, background 160ms ease, color 160ms ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-primary { background: var(--gold); color: #241c08; }
+.btn-primary:hover { background: var(--gold-soft); }
+.btn-ghost {
+  background: transparent;
+  color: var(--paper-text-on-ink);
+  border: 1px solid rgba(221, 195, 137, 0.4);
+}
+.btn-ghost:hover { background: rgba(221, 195, 137, 0.1); }
+.btn-link {
+  background: transparent;
+  color: var(--gold-soft);
+  padding-left: 6px;
+}
+
+.brand {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--paper);
+  letter-spacing: 0.01em;
+}
+.brand-button { background: none; border: none; cursor: pointer; padding: 0; }
+.brand-small { font-size: 1rem; }
+
+/* ==== LANDING ======================================================= */
+
+.landing {
+  min-height: 100%;
+  background:
+    radial-gradient(1200px 600px at 75% -10%, rgba(201, 162, 75, 0.12), transparent 60%),
+    linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%);
+  color: var(--paper-text-on-ink);
+}
+
+.landing-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px clamp(20px, 6vw, 80px);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: center;
+  padding: clamp(40px, 8vh, 96px) clamp(20px, 6vw, 80px) clamp(60px, 10vh, 120px);
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.hero-text { animation: rise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.hero-title {
+  margin: 0;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.05;
+  color: var(--paper);
+  letter-spacing: -0.01em;
+}
+.hero-lead {
+  margin: 22px 0 32px;
+  font-size: clamp(1.02rem, 1.4vw, 1.2rem);
+  line-height: 1.6;
+  color: var(--paper-text-on-ink);
+  max-width: 52ch;
+}
+.hero-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.hero-art { display: flex; justify-content: center; animation: rise 900ms 120ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+/* Lineage motif */
+.motif { width: 100%; max-width: 360px; height: auto; }
+.motif-lines path { fill: none; stroke: var(--line-parent); stroke-width: 2; opacity: 0.6; }
+.motif-union path { fill: none; stroke: var(--gold); stroke-width: 2.5; stroke-dasharray: 5 4; }
+.motif-node { stroke: rgba(246, 241, 231, 0.9); stroke-width: 2; }
+.motif-node.n-0 { fill: var(--accent-m); }
+.motif-node.n-1 { fill: var(--accent-f); }
+.motif-node.n-2 { fill: var(--gold); }
+
+.about {
+  border-top: 1px solid rgba(221, 195, 137, 0.16);
+  padding: clamp(50px, 8vh, 90px) clamp(20px, 6vw, 80px);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.about-statement {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  line-height: 1.4;
+  color: var(--paper);
+  margin: 0;
+  max-width: 28ch;
+}
+
+.capabilities {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  padding: clamp(30px, 5vh, 50px) clamp(20px, 6vw, 80px) clamp(50px, 9vh, 100px);
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.capability { border-top: 2px solid var(--gold); padding-top: 18px; }
+.capability-title { margin: 0 0 10px; font-size: 1.3rem; color: var(--paper); }
+.capability p { margin: 0; line-height: 1.6; color: var(--paper-text-on-ink); }
+
+.glimpse {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  background: var(--ink-3);
+  padding: clamp(50px, 9vh, 100px) clamp(20px, 6vw, 80px);
+}
+.glimpse-frame {
+  background: linear-gradient(160deg, #20243a, #14172400);
+  border: 1px solid rgba(221, 195, 137, 0.2);
+  border-radius: 16px;
+  padding: 36px;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+.glimpse-title { margin: 0 0 14px; font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--paper); }
+.glimpse-text p { margin: 0 0 26px; line-height: 1.6; max-width: 46ch; }
+
+.landing-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 28px clamp(20px, 6vw, 80px);
+  border-top: 1px solid rgba(221, 195, 137, 0.16);
+}
+.footer-note { color: var(--text-soft); font-size: 0.9rem; }
+
+/* ==== TREE SCREEN =================================================== */
+
+.tree-screen { display: flex; flex-direction: column; height: 100vh; }
+.tree-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px clamp(16px, 4vw, 32px);
+  background: linear-gradient(180deg, var(--ink-2), var(--ink));
+  border-bottom: 1px solid rgba(201, 162, 75, 0.22);
+}
+.legend { display: flex; gap: 18px; margin: 0; padding: 0; list-style: none; flex-wrap: wrap; }
+.legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--paper-text-on-ink);
+  font-size: 0.82rem;
+}
+.swatch { width: 14px; height: 14px; border-radius: 4px; display: inline-block; }
+.sw-m { background: var(--accent-m); }
+.sw-f { background: var(--accent-f); }
+.sw-union { background: transparent; border-top: 2px dashed var(--gold); border-radius: 0; height: 0; width: 18px; }
+.sw-dagger { color: var(--gold-soft); width: auto; }
+.sw-deceased { background: var(--paper-2); border: 1px solid var(--paper-edge); filter: saturate(0.5); }
+.tree-canvas { position: relative; flex: 1; min-height: 0; background: var(--ink); }
+
+/* ---- States -------------------------------------------------------- */
+.state { display: grid; place-items: center; height: 100%; color: var(--paper); padding: 24px; text-align: center; }
+.state-error { color: #e7a6a6; }
+
+/* ---- Person card --------------------------------------------------- */
+
+.person-reveal { animation: rise 500ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+.person-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 210px;
+  min-height: 76px;
+  padding: 12px 14px;
+  background: var(--paper);
+  border: 1px solid var(--paper-edge);
+  border-radius: 12px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.34);
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+.person-card:hover { transform: translateY(-2px); box-shadow: 0 14px 28px rgba(0, 0, 0, 0.42); }
+
+.person-avatar {
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 0.95rem;
+  color: var(--paper);
+  background: var(--accent-u);
+}
+.gender-m .person-avatar { background: var(--accent-m); }
+.gender-f .person-avatar { background: var(--accent-f); }
+.gender-o .person-avatar { background: var(--accent-o); }
+
+.person-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.person-name {
+  margin: 0;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.2;
+  color: var(--text);
+}
+.person-dates { margin: 0; font-size: 0.76rem; color: var(--text-soft); font-variant-numeric: tabular-nums; }
+.person-place { margin: 0; font-size: 0.74rem; color: var(--text-soft); font-style: italic; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 140px; }
+
+.person-card.deceased { background: var(--paper-2); filter: saturate(0.72); }
+.person-card.deceased .person-name { color: #4f4a42; }
+.person-dagger { color: var(--text-soft); }
+
+.react-flow__node.selected .person-card {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ---- Edges --------------------------------------------------------- */
+.react-flow__edge.edge-parent .react-flow__edge-path { stroke: var(--line-parent); stroke-width: 1.6; }
+.react-flow__edge.edge-union .react-flow__edge-path { stroke: var(--gold); stroke-width: 2; stroke-dasharray: 5 4; opacity: 0.75; }
+
+/* ---- React Flow chrome -------------------------------------------- */
+.react-flow__minimap { background: var(--ink-2); border: 1px solid rgba(201, 162, 75, 0.25); border-radius: 8px; }
+.react-flow__controls { border-radius: 8px; overflow: hidden; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35); }
+.react-flow__handle { opacity: 0; }
+
+/* ---- Detail panel -------------------------------------------------- */
+.panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(360px, 92vw);
+  background: var(--paper);
+  box-shadow: -18px 0 40px rgba(0, 0, 0, 0.35);
+  padding: 26px 24px;
+  overflow-y: auto;
+  animation: slideIn 260ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.panel-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  border: none;
+  background: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--text-soft);
+  cursor: pointer;
+}
+.panel-close:hover { color: var(--text); }
+.panel-loading, .panel-error { color: var(--text-soft); }
+.panel-name { margin: 6px 0 4px; font-size: 1.5rem; color: var(--text); }
+.panel-meta { margin: 0 0 20px; color: var(--text-soft); font-size: 0.86rem; }
+.panel-section { margin-bottom: 18px; }
+.panel-heading {
+  margin: 0 0 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.panel-list, .panel-events { margin: 0; padding-left: 18px; line-height: 1.6; }
+.panel-events { list-style: none; padding-left: 0; }
+.panel-events li { padding: 6px 0; border-bottom: 1px solid var(--paper-edge); font-size: 0.9rem; }
+.event-type { font-weight: 600; text-transform: capitalize; }
+.event-date { color: var(--text-soft); }
+.event-desc { color: var(--text); }
+
+/* ---- Motion -------------------------------------------------------- */
+@keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn, .person-card { transition: none; }
+  .person-reveal, .hero-text, .hero-art, .panel { animation: none; }
+}
+
+/* ---- Responsive ---------------------------------------------------- */
+@media (max-width: 860px) {
+  .hero, .glimpse { grid-template-columns: 1fr; }
+  .hero-art { order: -1; }
+  .capabilities { grid-template-columns: 1fr; gap: 28px; }
+  .legend { display: none; }
+}
+
+/* ---- Focus controls (ancestors / descendants picker) --------------- */
+.focus-controls {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 10px 12px;
+  background: rgba(30, 34, 54, 0.92);
+  border: 1px solid rgba(201, 162, 75, 0.28);
+  border-radius: 10px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+}
+.focus-label { color: var(--gold-soft); font-size: 0.82rem; }
+.focus-select {
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--text);
+  background: var(--paper);
+  border: 1px solid var(--paper-edge);
+  border-radius: 7px;
+  padding: 7px 10px;
+  max-width: 220px;
+}
+.focus-toggle { display: inline-flex; border: 1px solid rgba(221, 195, 137, 0.4); border-radius: 7px; overflow: hidden; }
+.focus-toggle button {
+  font: inherit;
+  font-size: 0.84rem;
+  border: none;
+  background: transparent;
+  color: var(--paper-text-on-ink);
+  padding: 7px 14px;
+  cursor: pointer;
+  transition: background 140ms ease, color 140ms ease;
+}
+.focus-toggle button.active { background: var(--gold); color: #241c08; }
+.focus-toggle button:not(.active):hover { background: rgba(221, 195, 137, 0.12); }
+
+@media (max-width: 640px) {
+  .focus-controls { left: 8px; right: 8px; top: 8px; }
+  .focus-select { max-width: none; flex: 1; }
+}
+
+/* ---- Connection highlight on select -------------------------------- */
+/* Placed after the edge-parent/edge-union rules so it wins on specificity. */
+.react-flow__edge.edge-highlight .react-flow__edge-path {
+  stroke: #ffd36b;
+  stroke-width: 3;
+  stroke-dasharray: none;
+  opacity: 1;
+  filter: drop-shadow(0 0 5px rgba(255, 211, 107, 0.95));
+}
+.react-flow__edge.edge-dim .react-flow__edge-path {
+  opacity: 0.16;
+}
+.react-flow__edge.edge-highlight .react-flow__arrowhead { fill: #ffd36b; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .react-flow__edge.edge-highlight .react-flow__edge-path {
+    animation: glowPulse 1.6s ease-in-out infinite;
+  }
+}
+@keyframes glowPulse {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(255, 211, 107, 0.7)); }
+  50% { filter: drop-shadow(0 0 9px rgba(255, 211, 107, 1)); }
+}

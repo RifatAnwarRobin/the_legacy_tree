@@ -53,6 +53,7 @@ class GraphView(APIView):
                     "gender": p.gender,
                     "is_living": p.is_living,
                     "birth_date": p.birth_date.isoformat() if p.birth_date else None,
+                    "death_date": p.death_date.isoformat() if p.death_date else None,
                 },
             }
             for p in Person.objects.all()
