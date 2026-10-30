@@ -10,7 +10,7 @@ venv/
 /backend/media/
 
 # Env & secrets
-.env
+.env/
 .md
 
 # Tooling

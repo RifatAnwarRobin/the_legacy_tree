@@ -43,9 +43,25 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # Third Party(DRF Registration)
+    "rest_framework",
     # Local apps
     "apps.people",
 ]
+
+#Rest-framwork setup
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
+    ],
+    # Reads are open; writes require login. Please, Do Tighten this to IsAuthenticated (or
+    # role-based permissions) before real deployment.
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly",
+    ],
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 50,
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
