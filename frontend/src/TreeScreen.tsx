@@ -2,9 +2,10 @@ import { FamilyGraph } from "./graph/FamilyGraph";
 
 interface Props {
   onHome: () => void;
+  onLogout: () => void;
 }
 
-export function TreeScreen({ onHome }: Props) {
+export function TreeScreen({ onHome, onLogout }: Props) {
   return (
     <div className="tree-screen">
       <header className="tree-bar">
@@ -25,6 +26,9 @@ export function TreeScreen({ onHome }: Props) {
             <span className="swatch sw-deceased" /> Deceased
           </li>
         </ul>
+        <button className="btn btn-link" onClick={onLogout}>
+          Sign out
+        </button>
       </header>
       <main className="tree-canvas">
         <FamilyGraph />

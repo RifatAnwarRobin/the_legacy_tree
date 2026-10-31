@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "corsheaders",
     # Local apps
     "apps.people",
+    "apps.accounts",
 ]
 
 #Rest-framwork setup
@@ -58,7 +59,7 @@ REST_FRAMEWORK = {
     # Reads are open; writes require login. Please, Do Tighten this to IsAuthenticated (or
     # role-based permissions) before real deployment.
     "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.IsAuthenticatedOrReadOnly",
+        "rest_framework.permissions.IsAuthenticated",
     ],
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 50,

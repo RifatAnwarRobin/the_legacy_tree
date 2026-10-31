@@ -13,5 +13,6 @@ admin.site.index_title = "Manage The Family Tree"
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/", include("apps.people.urls"))
+    path("api/", include("apps.people.urls")),
+    path("api/auth/", include("apps.accounts.urls")),
 ]

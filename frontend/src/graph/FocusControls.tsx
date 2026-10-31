@@ -14,9 +14,9 @@ interface Props {
 }
 
 const MODES: { value: ViewMode; label: string }[] = [
+  { value: "all", label: "Full Tree" },
   { value: "ancestors", label: "Ancestors" },
   { value: "descendants", label: "Descendants" },
-  { value: "all", label: "Everyone" },
   { value: "timeline", label: "Timeline" },
 ];
 

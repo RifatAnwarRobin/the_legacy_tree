@@ -1,15 +1,23 @@
 interface Props {
   onEnter: () => void;
+  onLogout: () => void;
+  userName?: string;
 }
 
-export function Landing({ onEnter }: Props) {
+export function Landing({ onEnter, onLogout, userName }: Props) {
   return (
     <div className="landing">
       <header className="landing-nav">
         <span className="brand">The Legacy Tree</span>
-        <button className="btn btn-ghost" onClick={onEnter}>
-          Open the tree
-        </button>
+        <div className="nav-actions">
+          {userName && <span className="nav-user">{userName}</span>}
+          <button className="btn btn-ghost" onClick={onEnter}>
+            Open the tree
+          </button>
+          <button className="btn btn-link" onClick={onLogout}>
+            Sign out
+          </button>
+        </div>
       </header>
 
       <section className="hero">
